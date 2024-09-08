@@ -74,8 +74,8 @@ import AddButtonImage from './AddButtonImage.vue'
     &__book-descr
         display: flex
         flex-direction: column
-        row-gap: 10px
-        margin-bottom: 20px
+        row-gap: 5px
+        margin-bottom: 30px
         align-items: start
         &-item
             color: #fff
