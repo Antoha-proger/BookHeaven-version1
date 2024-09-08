@@ -3,35 +3,37 @@ import AddButtonImage from './AddButtonImage.vue'
 </script>
 
 <template>
-  <article class="book-card">
-    <div class="book-card__wrapper">
-      <div class="book-card__progress">
-        <img src="@/assets/image/progress.png" alt="" width="750" height="5" />
-      </div>
-      <div class="book-card__main">
-        <div class="book-card__book-image">
-          <img src="@/assets/image/book.png" alt="" width="214" height="340" />
+  <div class="container">
+    <article class="book-card">
+      <div class="book-card__wrapper">
+        <div class="book-card__progress">
+          <img src="@/assets/image/progress.png" alt="" width="750" height="5" />
         </div>
-        <div class="book-card__book-info">
-          <p class="book-card__book-title">Герой нашего времени</p>
-          <p class="book-card__book-author">М.Ю. Лермантов</p>
-
-          <div class="book-card__book-descr">
-            <p class="book-card__book-descr-item">Количество страниц 250</p>
-            <p class="book-card__book-descr-item">Страниц прочитано: 150</p>
-            <p class="book-card__book-descr-item">Начало чтения: 23.07.24</p>
-            <p class="book-card__book-descr-item">Издательство</p>
-            <p class="book-card__book-descr-item">ISBN</p>
+        <div class="book-card__main">
+          <div class="book-card__book-image">
+            <img src="@/assets/image/book.png" alt="" width="214" height="340" />
           </div>
+          <div class="book-card__book-info">
+            <p class="book-card__book-title">Герой нашего времени</p>
+            <p class="book-card__book-author">М.Ю. Лермантов</p>
 
-          <p class="book-card__more-button">Подробнее</p>
-        </div>
-        <div class="book-card__page-increment">
-          <AddButtonImage />
+            <div class="book-card__book-descr">
+              <p class="book-card__book-descr-item">Количество страниц 250</p>
+              <p class="book-card__book-descr-item">Страниц прочитано: 150</p>
+              <p class="book-card__book-descr-item">Начало чтения: 23.07.24</p>
+              <p class="book-card__book-descr-item">Издательство</p>
+              <p class="book-card__book-descr-item">ISBN</p>
+            </div>
+
+            <p class="book-card__more-button">Подробнее</p>
+          </div>
+          <div class="book-card__page-increment">
+            <AddButtonImage />
+          </div>
         </div>
       </div>
-    </div>
-  </article>
+    </article>
+  </div>
 </template>
 
 <style lang="sass">

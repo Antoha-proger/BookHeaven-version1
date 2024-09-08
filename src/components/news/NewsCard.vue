@@ -19,7 +19,7 @@ const props = defineProps(['imageURL', 'title', 'author'])
 @import '@/assets/main.scss'
 
 .news-card
-    height: 350px
+    min-height: 350px
     width: 500px
     border: 2px solid $base-brown-color
     border-radius: 10px
