@@ -5,7 +5,7 @@ import BookCard from '@/components/cards/bookCard/BookCard.vue'
 import NewsBlock from '@/components/news/NewsBlock.vue'
 import { useRootStore } from '@/stores/store'
 import { onBeforeMount } from 'vue'
-import { getAllNews } from '@/services/news'
+import { getAllNews } from '@/services/news/news'
 
 const store = useRootStore()
 
