@@ -4,7 +4,13 @@ import { defineStore } from 'pinia'
 export const useRootStore = defineStore('root', () => {
   let news = ref([])
 
+  let isModalShow = false
+
   function getNews() {}
 
-  return { news, getNews }
+  return {
+    news,
+    isModalShow,
+    getNews
+  }
 })

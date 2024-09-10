@@ -1,5 +1,7 @@
 <script setup>
-const props = defineProps(['imageURL', 'title', 'author'])
+import { openNewsModalWindow } from '@/helper'
+
+const props = defineProps(['imageURL', 'title', 'author', 'newId'])
 </script>
 
 <template>
@@ -10,7 +12,7 @@ const props = defineProps(['imageURL', 'title', 'author'])
     <div class="news-card__bottom">
       <h3 class="news-card__title">{{ title }}</h3>
       <p class="news-card__author">{{ author }}</p>
-      <p class="news-card__more">Подробнее</p>
+      <button @click="openNewsModalWindow" class="news-card__more" :id="newId">Подробнее</button>
     </div>
   </article>
 </template>
@@ -35,6 +37,10 @@ const props = defineProps(['imageURL', 'title', 'author'])
       object-fit: cover
       object-position: center
 
+    &__bottom
+      display: flex
+      flex-direction: column
+
     &__author
         font-size: 20px
         margin-bottom: 15px
@@ -56,4 +62,7 @@ const props = defineProps(['imageURL', 'title', 'author'])
       color: #A1A1A1
       font-size: 18px
       font-weight: 600
+      border: none
+      background-color: transparent
+      cursor: pointer
 </style>

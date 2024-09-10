@@ -2,10 +2,10 @@
 import FeatureCard from './FeatureCard.vue'
 import { features } from './setup'
 
-import AOS from 'aos'
-import 'aos/dist/aos.css'
+// import AOS from 'aos'
+// import 'aos/dist/aos.css'
 
-AOS.init()
+// AOS.init()
 </script>
 
 <template>

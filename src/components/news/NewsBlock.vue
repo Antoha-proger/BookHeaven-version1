@@ -6,6 +6,7 @@ import { register } from 'swiper/element/bundle'
 register()
 
 const store = useRootStore()
+let newsId = 0
 </script>
 
 <template>
@@ -24,8 +25,13 @@ const store = useRootStore()
             delay: 5000
           }"
         >
-          <swiper-slide v-for="items in store.news">
-            <NewsCard :imageURL="items.urlToImage" :title="items.title" :author="items.author" />
+          <swiper-slide v-for="(items, key) in store.news" :key="key">
+            <NewsCard
+              :imageURL="items.urlToImage"
+              :title="items.title"
+              :author="items.author"
+              :newId="newsId++"
+            />
           </swiper-slide>
         </swiper-container>
       </div>
@@ -40,8 +46,6 @@ const store = useRootStore()
     background-color: $base-body-color
     min-height: 600px
     padding-top: 50px
-    // display: flex
-    // flex-direction: column
 
     &__title
         color: $base-brown-color
