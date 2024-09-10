@@ -3,13 +3,15 @@ import { useRootStore } from './stores/store'
 const store = useRootStore()
 
 export function closeNewsModalWindow() {
-  store.isModalShow = false
+  store.isNewsModalShow = false
 }
 
 export function openNewsModalWindow(event) {
-  store.isModalShow = true
+  store.isNewsModalShow = true
 
   const newId = event.target.id
 
-  console.log(newId)
+  store.selectedNew = store.news[newId]
+
+  // console.log(newId)
 }

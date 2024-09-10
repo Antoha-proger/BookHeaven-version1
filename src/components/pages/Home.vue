@@ -27,7 +27,7 @@ onBeforeMount(async () => {
   </main>
   <FooterBlock />
 
-  <NewModal v-if="store.isModalShow" />
+  <NewModal v-if="store.isNewsModalShow" />
 </template>
 
 <style lang="sass">

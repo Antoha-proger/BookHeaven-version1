@@ -1,5 +1,8 @@
 <script setup>
 import { closeNewsModalWindow } from '@/helper'
+import { useRootStore } from '@/stores/store'
+
+const store = useRootStore()
 </script>
 
 <template>
@@ -7,7 +10,7 @@ import { closeNewsModalWindow } from '@/helper'
     <div class="modal-window">
       <div class="modal-window__left-part">
         <img
-          src="@/assets/image/ima.png"
+          :src="store.selectedNew.urlToImage"
           alt=""
           class="modal-window__new-image"
           width="250"
@@ -17,7 +20,7 @@ import { closeNewsModalWindow } from '@/helper'
       <div class="modal-window__right-part">
         <div class="modal-window__content">
           <h3 class="modal-window__new-title">
-            Смертельная психодрама ради исцеления. Обзор книги «Ящик Скиннера»
+            {{ store.selectedNew.title }}
           </h3>
           <div class="modal-window__text">
             Ясность нашей позиции очевидна: сплочённость команды профессионалов говорит о
@@ -38,7 +41,7 @@ import { closeNewsModalWindow } from '@/helper'
             высокотехнологичная концепция общественного уклада обеспечивает актуальность новых
             предложений.
           </div>
-          <p class="modal-window__new-author">Alex Bes</p>
+          <p class="modal-window__new-author">{{ store.selectedNew.author }}</p>
         </div>
         <button @click="closeNewsModalWindow" class="modal-button-close">
           <img
@@ -78,7 +81,7 @@ import { closeNewsModalWindow } from '@/helper'
     justify-content: space-between
     column-gap: 20px
     &__new-image
-        object-fit: cover
+        object-fit: scale-down
     &__right-part
         display: flex
     &__content
