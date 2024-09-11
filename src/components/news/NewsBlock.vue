@@ -1,11 +1,11 @@
 <script setup>
 import NewsCard from './NewsCard.vue'
-import { useRootStore } from '@/stores/store'
+import { useNewsStore } from '@/stores/newsStore'
 import { register } from 'swiper/element/bundle'
 
 register()
 
-const store = useRootStore()
+const newsStore = useNewsStore()
 let newsId = 0
 </script>
 
@@ -17,7 +17,6 @@ let newsId = 0
         <swiper-container
           :slides-per-view="2.2"
           :space-between="20"
-          :grabCursor="true"
           :scrollbar="{
             init: true
           }"
@@ -25,7 +24,7 @@ let newsId = 0
             delay: 5000
           }"
         >
-          <swiper-slide v-for="(items, key) in store.news" :key="key">
+          <swiper-slide v-for="(items, key) in newsStore.news" :key="key">
             <NewsCard
               :imageURL="items.urlToImage"
               :title="items.title"

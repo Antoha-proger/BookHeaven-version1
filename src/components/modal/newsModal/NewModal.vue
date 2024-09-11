@@ -1,8 +1,7 @@
 <script setup>
-import { closeNewsModalWindow } from '@/helper'
-import { useRootStore } from '@/stores/store'
+import { useNewsStore } from '@/stores/newsStore'
 
-const store = useRootStore()
+const store = useNewsStore()
 </script>
 
 <template>
@@ -43,7 +42,7 @@ const store = useRootStore()
           </div>
           <p class="modal-window__new-author">{{ store.selectedNew.author }}</p>
         </div>
-        <button @click="closeNewsModalWindow" class="modal-button-close">
+        <button @click="store.closeNewsModalWindow" class="modal-button-close">
           <img
             class="modal-button-close-image"
             src="@/assets/icons/modalButtonClose.svg"

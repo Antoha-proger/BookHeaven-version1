@@ -5,17 +5,14 @@ import BookCard from '@/components/cards/bookCard/BookCard.vue'
 import NewsBlock from '@/components/news/NewsBlock.vue'
 import FeaturesBlock from '../features/FeaturesBlock.vue'
 import NewModal from '../modal/newsModal/NewModal.vue'
-import { useRootStore } from '@/stores/store'
+import { useNewsStore } from '@/stores/newsStore'
 import { onBeforeMount } from 'vue'
-import { getAllNews } from '@/services/news/news'
 
-const store = useRootStore()
+const newsStore = useNewsStore()
 
 onBeforeMount(async () => {
-  store.news = await getAllNews()
+  await newsStore.getAllNews()
 })
-
-// console.log(store.news)
 </script>
 
 <template>
@@ -27,7 +24,7 @@ onBeforeMount(async () => {
   </main>
   <FooterBlock />
 
-  <NewModal v-if="store.isNewsModalShow" />
+  <NewModal v-if="newsStore.isNewsModalShow" />
 </template>
 
 <style lang="sass">

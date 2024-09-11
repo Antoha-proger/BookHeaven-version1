@@ -1,5 +1,7 @@
 <script setup>
-import { openNewsModalWindow } from '@/helper'
+import { useNewsStore } from '@/stores/newsStore'
+
+const newsStore = useNewsStore()
 
 const props = defineProps(['imageURL', 'title', 'author', 'newId'])
 </script>
@@ -12,7 +14,9 @@ const props = defineProps(['imageURL', 'title', 'author', 'newId'])
     <div class="news-card__bottom">
       <h3 class="news-card__title">{{ title }}</h3>
       <p class="news-card__author">{{ author }}</p>
-      <button @click="openNewsModalWindow" class="news-card__more" :id="newId">Подробнее</button>
+      <button @click="newsStore.openNewsModalWindow" class="news-card__more" :id="newId">
+        Подробнее
+      </button>
     </div>
   </article>
 </template>
@@ -28,7 +32,6 @@ const props = defineProps(['imageURL', 'title', 'author', 'newId'])
     background-color: #fff
     padding: 10px
     margin-bottom: 35px
-    // color: $base-brown-color
     box-shadow: 8px 8px 8px 0px rgba(34, 60, 80, 0.4)
 
     &__image
@@ -52,7 +55,6 @@ const props = defineProps(['imageURL', 'title', 'author', 'newId'])
         font-weight: 600
         margin-bottom: 10px
         height: 60px
-        // max-width: 470px
         overflow: hidden
         text-overflow: ellipsis
         white-space: wrap
@@ -61,7 +63,6 @@ const props = defineProps(['imageURL', 'title', 'author', 'newId'])
       text-align: right
       color: #A1A1A1
       font-size: 18px
-      font-weight: 600
       border: none
       background-color: transparent
       cursor: pointer
