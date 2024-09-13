@@ -1,7 +1,7 @@
 <script setup>
 import Navigation from '@/components/Navigation/Navigation.vue'
 import FooterBlock from '@/components/FooterBlock.vue'
-import BookCard from '@/components/cards/bookCard/BookCard.vue'
+import BookProgressCard from '@/components/cards/bookCard/BookProgressCard.vue'
 import NewsBlock from '@/components/news/NewsBlock.vue'
 import FeaturesBlock from '../features/FeaturesBlock.vue'
 import NewModal from '../modal/newsModal/NewModal.vue'
@@ -18,7 +18,7 @@ onBeforeMount(async () => {
 <template>
   <Navigation />
   <main>
-    <BookCard />
+    <BookProgressCard />
     <NewsBlock />
     <FeaturesBlock />
   </main>
