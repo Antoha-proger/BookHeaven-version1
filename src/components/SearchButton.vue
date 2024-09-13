@@ -1,7 +1,9 @@
-<script setup></script>
+<script setup>
+defineEmits(['search'])
+</script>
 
 <template>
-  <button class="search-button">Поиск</button>
+  <button class="search-button" @click="$emit('search')">Поиск</button>
 </template>
 
 <style lang="sass">

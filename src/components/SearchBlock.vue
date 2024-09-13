@@ -1,17 +1,26 @@
 <script setup>
+import { ref } from 'vue'
 import SearchBy from './SearchBy.vue'
 import InputField from './InputField.vue'
 import SearchButton from './SearchButton.vue'
+import { useBookStore } from '@/stores/bookStore'
+
+const booksStore = useBookStore()
+
+const searchBy = ref('')
+const searchBook = ref('')
 </script>
 
 <template>
   <section class="search-block">
     <div class="container search-block__container">
-      <SearchBy />
-      <InputField />
-      <SearchButton />
+      <SearchBy v-model="searchBy" />
+      <InputField v-model="searchBook" />
+      <SearchButton @search="booksStore.getBooks(searchBy, searchBook)" />
     </div>
   </section>
+  <!-- <p>{{ searchBook }}</p>
+  <p>{{ searchBy }}</p> -->
 </template>
 
 <style lang="sass">

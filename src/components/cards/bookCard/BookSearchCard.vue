@@ -24,11 +24,7 @@
         position: relative
         left: 143px
         bottom: -5px
-        // z-index: 10
         margin-right: 30px
-        // -webkit-box-shadow: 10px 10px 4px 0px rgba(0, 0, 0, 0.35)
-        // -moz-box-shadow: 10px 10px 4px 0px rgba(0, 0, 0, 0.35)
-        // box-shadow: 10px 10px 4px 0px rgba(0, 0, 0, 0.35)
         img
             -webkit-box-shadow: 10px 10px 4px 0px rgba(0, 0, 0, 0.35)
             -moz-box-shadow: 10px 10px 4px 0px rgba(0, 0, 0, 0.35)
@@ -43,7 +39,6 @@
         border-radius: 15px
         width: 500px
         display: flex
-        // align-items: center
         flex-direction: column
         padding-top: 20px
     &__title

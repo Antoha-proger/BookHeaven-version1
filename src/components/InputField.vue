@@ -1,7 +1,9 @@
-<script setup></script>
+<script setup>
+const model = defineModel()
+</script>
 
 <template>
-  <input type="text" class="input-field" placeholder="Найти книгу" />
+  <input type="text" class="input-field" placeholder="Найти книгу" v-model="model" />
 </template>
 
 <style lang="sass">

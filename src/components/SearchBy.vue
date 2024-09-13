@@ -1,12 +1,14 @@
-<script setup></script>
+<script setup>
+const model = defineModel()
+</script>
 
 <template>
   <div class="search-by">
     <p class="search-by__text">Искать по :</p>
-    <select name="books" id="books-select" class="search-by__select">
-      <option value="book-name" selected>Названию книги</option>
-      <option value="book-author">Автору</option>
-      <option value="book-isbn">ISBN</option>
+    <select name="books" id="books-select" class="search-by__select" v-model="model">
+      <option value="intitle" selected>Названию книги</option>
+      <option value="inauthor">Автору</option>
+      <option value="isbn">ISBN</option>
     </select>
   </div>
 </template>
