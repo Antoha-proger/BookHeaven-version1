@@ -1,6 +1,6 @@
 <script setup>
 import Navigation from '@/components/Navigation/Navigation.vue'
-import FooterBlock from '@/components/blocks/FooterBlock.vue'
+import FooterBlock from '@/components/FooterBlock.vue'
 import BookCard from '@/components/cards/bookCard/BookCard.vue'
 import NewsBlock from '@/components/news/NewsBlock.vue'
 import FeaturesBlock from '../features/FeaturesBlock.vue'

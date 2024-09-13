@@ -1,3 +1,18 @@
+<script setup>
+import Navigation from '../Navigation/Navigation.vue'
+import FooterBlock from '../FooterBlock.vue'
+import SearchBlock from '../SearchBlock.vue'
+</script>
+
 <template>
-    <h1>Search Page</h1>
+  <Navigation />
+  <main>
+    <SearchBlock />
+  </main>
+  <FooterBlock />
 </template>
+
+<style lang="sass">
+.nav
+    margin-bottom: 50px
+</style>
