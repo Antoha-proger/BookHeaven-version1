@@ -26,6 +26,13 @@ const props = defineProps(['title', 'author', 'imgLink'])
     flex-direction: column
     max-width: 200px
     margin-bottom: 50px
+    max-height: 420px
+    transition: 0.3s
+    &:hover
+      transform: translateY(-10px)
+      -webkit-box-shadow: 9px 10px 8px 0px rgba(34, 60, 80, 0.2)
+      -moz-box-shadow: 9px 10px 8px 0px rgba(34, 60, 80, 0.2)
+      box-shadow: 9px 10px 8px 0px rgba(34, 60, 80, 0.2)
     &__image
         margin-bottom: 15px
         img
@@ -38,13 +45,23 @@ const props = defineProps(['title', 'author', 'imgLink'])
       font-size: 18px
       margin-bottom: 5px
       color: $base-brown-color
+      max-height: 30px
+      overflow: hidden
+      white-space: nowrap
+      text-overflow: ellipsis
     &__author
       color: #A1A1A1
       margin-bottom: 15px
+      max-height: 20px
+      overflow: hidden
     &__bottom
       display: flex
       justify-content: space-between
       align-items: center
+      max-height: 30px
+      overflow: hidden
+      padding: 0 5px
+
     &__more
       font-size: 18px
       color: $base-brown-color
