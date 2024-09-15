@@ -2,6 +2,7 @@
 import NewsCard from './NewsCard.vue'
 import { useNewsStore } from '@/stores/newsStore'
 import { register } from 'swiper/element/bundle'
+import { VueSpinner } from 'vue3-spinners'
 
 register()
 
@@ -14,7 +15,12 @@ let newsId = 0
     <div class="container">
       <h2 class="news__title">Books News</h2>
       <div class="news__content">
+        <div class="loader-container" v-show="newsStore.isLoaderShow">
+          <VueSpinner size="40" color="#4e4035" />
+        </div>
+
         <swiper-container
+          v-show="!newsStore.isLoaderShow"
           :slides-per-view="2.2"
           :space-between="20"
           :scrollbar="{
@@ -54,4 +60,15 @@ let newsId = 0
         text-align: center
         text-decoration: underline
         text-underline-offset: 10px
+
+    &__content
+      min-height: 400px
+
+
+.loader-container
+  width: 100%
+  min-height: inherit
+  display: flex
+  justify-content: center
+  align-items: center
 </style>

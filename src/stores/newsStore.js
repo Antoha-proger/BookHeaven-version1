@@ -5,6 +5,8 @@ export const useNewsStore = defineStore('news', () => {
   // Список объектов с новостями
   let news = ref([])
 
+  const isLoaderShow = ref(false)
+
   // Переменная, отвечающая за открытие и закрытие модального окна с новостями
   let isNewsModalShow = ref(false)
 
@@ -16,19 +18,21 @@ export const useNewsStore = defineStore('news', () => {
   }
 
   function openNewsModalWindow(event) {
-    this.isNewsModalShow = true
+    isNewsModalShow.value = true
     const newId = event.target.id
-    this.selectedNew = this.news[newId]
+    selectedNew.value = news.value[newId]
   }
 
   async function getAllNews() {
+    isLoaderShow.value = true
     let articles = await fetch(
       'https://newsapi.org/v2/everything?q=%D0%BA%D0%BD%D0%B8%D0%B3%D0%B0%20OR%20%D0%BA%D0%BD%D0%B8%D0%B3%D0%B8&searchIn=title&sortBy=publishedAt&language=ru&apiKey=8054b29d619f4696aaa3a0c77f34d4ab'
     )
     let formated_articles = await articles.json()
     let all_articles = [...formated_articles.articles]
 
-    this.news = formatNewsArray(all_articles)
+    news.value = formatNewsArray(all_articles)
+    isLoaderShow.value = false
   }
 
   function formatNewsArray(arr) {
@@ -40,6 +44,7 @@ export const useNewsStore = defineStore('news', () => {
   return {
     news,
     isNewsModalShow,
+    isLoaderShow,
     selectedNew,
     closeNewsModalWindow,
     openNewsModalWindow,

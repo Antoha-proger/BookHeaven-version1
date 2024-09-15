@@ -8,7 +8,7 @@ const model = defineModel()
     <select name="books" id="books-select" class="search-by__select" v-model="model">
       <option value="intitle" selected>Названию книги</option>
       <option value="inauthor">Автору</option>
-      <option value="isbn">ISBN</option>
+      <option value="inpublisher">Издателю</option>
     </select>
   </div>
 </template>

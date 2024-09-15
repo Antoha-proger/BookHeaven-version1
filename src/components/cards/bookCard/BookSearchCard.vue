@@ -1,15 +1,18 @@
-<script setup></script>
+<script setup>
+const props = defineProps(['title', 'author', 'imgLink'])
+</script>
 
 <template>
   <article class="book-search-card">
     <div class="book-search-card__image">
-      <img src="@/assets/image/book.png" width="200" height="300" alt="" />
+      <img :src="imgLink" width="200" height="300" alt="" />
     </div>
     <div class="book-search-card__book-descr">
-      <div class="book-search-card__wrapper">
-        <h4 class="book-search-card__title">Герой нашего времени</h4>
-        <p class="book-search-card__author">М.Ю. Лермонтов</p>
+      <h4 class="book-search-card__title">{{ title }}</h4>
+      <p class="book-search-card__author">{{ author }}</p>
+      <div class="book-search-card__bottom">
         <p class="book-search-card__more">Подробнее</p>
+        <img src="@/assets/icons/plusIcon.svg" alt="" width="18" height="18" />
       </div>
     </div>
   </article>
@@ -20,38 +23,29 @@
 
 .book-search-card
     display: flex
+    flex-direction: column
+    max-width: 200px
+    margin-bottom: 50px
     &__image
-        position: relative
-        left: 143px
-        bottom: -5px
-        margin-right: 30px
+        margin-bottom: 15px
         img
-            -webkit-box-shadow: 10px 10px 4px 0px rgba(0, 0, 0, 0.35)
-            -moz-box-shadow: 10px 10px 4px 0px rgba(0, 0, 0, 0.35)
-            box-shadow: 10px 10px 4px 0px rgba(0, 0, 0, 0.35)
-    &__wrapper
-        position: relative
-        left: 30%
+            width: 200px
+            height: 300px
     &__book-descr
-        align-self: end
-        background-color: $base-green-color
-        height: 150px
-        border-radius: 15px
-        width: 500px
-        display: flex
-        flex-direction: column
-        padding-top: 20px
+      max-width: 200px
     &__title
-        font-weight: 600
-        font-size: 22px
-        color: $base-brown-color
-        margin-bottom: 10px
+      font-weight: normal
+      font-size: 18px
+      margin-bottom: 5px
+      color: $base-brown-color
     &__author
-        font-size: 16px
-        font-weight: 400
-        color: $base-brown-color
-        margin-bottom: 25px
+      color: #A1A1A1
+      margin-bottom: 15px
+    &__bottom
+      display: flex
+      justify-content: space-between
+      align-items: center
     &__more
-        font-size: 20px
-        color: $base-orange-color
+      font-size: 18px
+      color: $base-brown-color
 </style>

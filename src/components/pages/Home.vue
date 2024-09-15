@@ -6,11 +6,11 @@ import NewsBlock from '@/components/news/NewsBlock.vue'
 import FeaturesBlock from '../features/FeaturesBlock.vue'
 import NewModal from '../modal/newsModal/NewModal.vue'
 import { useNewsStore } from '@/stores/newsStore'
-import { onBeforeMount } from 'vue'
+import { onMounted } from 'vue'
 
 const newsStore = useNewsStore()
 
-onBeforeMount(async () => {
+onMounted(async () => {
   await newsStore.getAllNews()
 })
 </script>
