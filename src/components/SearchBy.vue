@@ -9,6 +9,7 @@ const model = defineModel()
       <option value="intitle" selected>Названию книги</option>
       <option value="inauthor">Автору</option>
       <option value="inpublisher">Издателю</option>
+      <option value="">Везде</option>
     </select>
   </div>
 </template>
