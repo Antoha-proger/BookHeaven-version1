@@ -4,6 +4,7 @@ import FooterBlock from '../FooterBlock.vue'
 import SearchBlock from '../SearchBlock.vue'
 import BookSearchCard from '../cards/bookCard/BookSearchCard.vue'
 import { useBookStore } from '@/stores/bookStore'
+import { VueSpinner } from 'vue3-spinners'
 
 const bookStore = useBookStore()
 </script>
@@ -13,7 +14,14 @@ const bookStore = useBookStore()
     <Navigation />
     <main>
       <SearchBlock />
-      <div class="search-content container">
+      <div class="lets-search container" v-if="!bookStore.isBooksFound && !bookStore.isLoaderShow">
+        <img class="lets-search__img" src="@/assets/image/MainBooks.png" alt="" width="400" />
+        <h3 class="lets-search__title">Здесь пока ничего нет</h3>
+      </div>
+      <div class="loader-container container" v-else-if="bookStore.isLoaderShow">
+        <VueSpinner size="40" color="#4e4035" />
+      </div>
+      <div class="search-content container" v-else>
         <BookSearchCard
           v-for="(items, i) of bookStore.books"
           :key="i"
@@ -45,4 +53,20 @@ const bookStore = useBookStore()
   grid-template-columns: repeat(4, 1fr)
   column-gap: 100px
   row-gap: 30px
+
+.loader-container
+  min-height: 350px
+
+.lets-search
+  display: flex
+  flex-direction: column
+  align-items: center
+  row-gap: 50px
+  padding-top: 50px
+  margin-bottom: 100px
+  &__title
+    font-size: 32px
+    padding-left: 70px
+    // text-align: right
+    color: $base-brown-color
 </style>

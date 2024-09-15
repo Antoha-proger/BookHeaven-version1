@@ -3,9 +3,12 @@ import { defineStore } from 'pinia'
 
 export const useBookStore = defineStore('book', () => {
   const books = ref([])
+  const isBooksFound = ref(false)
+  const isLoaderShow = ref(false)
 
   async function getBooks(searchBy, searchQuery) {
-    this.books = []
+    isLoaderShow.value = true
+    books.value = []
     const book_words = searchQuery.split(' ')
     const parsed_book = book_words.join('+')
     const book_name = parsed_book
@@ -16,9 +19,9 @@ export const useBookStore = defineStore('book', () => {
 
     let jsonRes = await res.json()
     let selectItems = await jsonRes['items']
-    console.log(selectItems)
+    // console.log(selectItems)
 
-    let f = []
+    // let f = []
 
     // // let g = Object.fromEntries(
     // //   Object.entries(selectItems).filter(item => [])
@@ -28,14 +31,17 @@ export const useBookStore = defineStore('book', () => {
       let k = i['volumeInfo']
       //   console.log(k)
       if (k.imageLinks && k.title && k.authors) {
-        this.books.push({
+        books.value.push({
           title: k.title,
           author: k.authors,
           image: k.imageLinks.thumbnail
         })
       }
     }
-    console.log(this.books)
+
+    isBooksFound.value = true
+    isLoaderShow.value = false
+    // console.log(this.books)
 
     // https://openlibrary.org/search.json?q=the+lord+of+the+rings
 
@@ -70,6 +76,8 @@ export const useBookStore = defineStore('book', () => {
 
   return {
     books,
+    isBooksFound,
+    isLoaderShow,
     getBooks
   }
 })
