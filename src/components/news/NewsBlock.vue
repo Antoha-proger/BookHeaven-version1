@@ -1,5 +1,5 @@
 <script setup>
-import NewsCard from './NewsCard.vue'
+import NewsCard from '../cards/NewCard/NewsCard.vue'
 import { useNewsStore } from '@/stores/newsStore'
 import { register } from 'swiper/element/bundle'
 import { VueSpinner } from 'vue3-spinners'

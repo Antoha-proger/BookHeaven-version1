@@ -1,6 +1,6 @@
 <script setup>
-import Navigation from '../Navigation/Navigation.vue'
-import FooterBlock from '../FooterBlock.vue'
+import Header from '../Header/Header.vue'
+import FooterBlock from '../Footer/FooterBlock.vue'
 import SearchBlock from '../SearchBlock.vue'
 import BookSearchCard from '../cards/bookCard/BookSearchCard.vue'
 import { useBookStore } from '@/stores/bookStore'
@@ -11,7 +11,7 @@ const bookStore = useBookStore()
 
 <template>
   <div class="wrapper">
-    <Navigation />
+    <Header />
     <main>
       <SearchBlock />
       <div class="lets-search container" v-if="!bookStore.isBooksFound && !bookStore.isLoaderShow">

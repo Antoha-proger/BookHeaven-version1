@@ -1,6 +1,6 @@
 <script setup>
-import Navigation from '@/components/Navigation/Navigation.vue'
-import FooterBlock from '@/components/FooterBlock.vue'
+import Header from '@/components/Header/Header.vue'
+import FooterBlock from '@/components/Footer/FooterBlock.vue'
 import BookProgressCard from '@/components/cards/bookCard/BookProgressCard.vue'
 import NewsBlock from '@/components/news/NewsBlock.vue'
 import FeaturesBlock from '../features/FeaturesBlock.vue'
@@ -16,7 +16,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <Navigation />
+  <Header />
   <main>
     <BookProgressCard />
     <NewsBlock />
