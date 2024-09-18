@@ -26,6 +26,7 @@ const bookStore = useBookStore()
         <BookSearchCard
           v-for="(items, i) of bookStore.books"
           :key="i"
+          :id="items.id"
           :title="items.title"
           :author="items.author[0]"
           :imgLink="items.image"

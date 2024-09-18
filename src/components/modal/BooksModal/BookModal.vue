@@ -11,30 +11,26 @@ const booksStore = useBookStore()
     <div class="books-modal">
       <div class="books-modal__top">
         <div class="books-modal__image">
-          <img src="@/assets/image/book.png" alt="" width="150" height="225" />
+          <img :src="booksStore.selectedBook.img" alt="" width="150" height="225" />
         </div>
         <div class="books-modal__content">
-          <h3 class="books-modal__title">Герой нашего времени</h3>
-          <p class="books-modal__author">М.Ю. Лермонтов</p>
+          <h3 class="books-modal__title">{{ booksStore.selectedBook.title }}</h3>
+          <p class="books-modal__author">{{ booksStore.selectedBook.author[0] }}</p>
           <div class="books-modal__descr">
-            <p class="books-modal__descr-item">ISBN: 978-5-17-092164-5</p>
-            <p class="books-modal__descr-item">Количество страниц: 224</p>
-            <p class="books-modal__descr-item">Издательство: Neoclassic</p>
+            <p class="books-modal__descr-item">ISBN: {{ booksStore.selectedBook.isbn }}</p>
+            <p class="books-modal__descr-item">
+              Количество страниц: {{ booksStore.selectedBook.pageCount }}
+            </p>
+            <p class="books-modal__descr-item">
+              Издательство: {{ booksStore.selectedBook.publisher }}
+            </p>
           </div>
         </div>
         <ModalButtonClose @close="booksStore.closeBooksModalWindow" />
       </div>
       <div class="books-modal__bottom">
         <p class="books-modal__text">
-          Ясность нашей позиции очевидна: сплочённость команды профессионалов говорит о возможностях
-          вывода текущих активов. Следует отметить, что глубокий уровень погружения позволяет
-          выполнить важные задания по разработке благоприятных перспектив! Прежде всего,
-          высокотехнологичная концепция общественного уклада обеспечивает актуальность новых
-          предложений. Ясность нашей позиции очевидна: сплочённость команды профессионалов говорит о
-          возможностях вывода текущих активов. Следует отметить, что глубокий уровень погружения
-          позволяет выполнить важные задания по разработке благоприятных перспектив! Прежде всего,
-          высокотехнологичная концепция общественного уклада обеспечивает актуальность новых
-          предложений.
+          {{ booksStore.selectedBook.description }}
         </p>
         <p class="books-modal__add-to-collection">Добавить в коллекцию</p>
       </div>

@@ -6,6 +6,7 @@ export const useBookStore = defineStore('book', () => {
   const isBooksFound = ref(false)
   const isLoaderShow = ref(false)
   const isBooksModalShow = ref(false)
+  const selectedBook = ref()
 
   async function getBooks(searchBy, searchQuery) {
     isLoaderShow.value = true
@@ -25,6 +26,7 @@ export const useBookStore = defineStore('book', () => {
       let k = i['volumeInfo']
       if (k.imageLinks && k.title && k.authors) {
         books.value.push({
+          id: i.id,
           title: k.title,
           author: k.authors,
           image: k.imageLinks.thumbnail
@@ -34,9 +36,12 @@ export const useBookStore = defineStore('book', () => {
 
     isBooksFound.value = true
     isLoaderShow.value = false
+    console.log(books)
   }
 
-  function openBooksModalWindow() {
+  async function openBooksModalWindow(event) {
+    const selectBookId = event.target.id
+    await getCurrentBook(selectBookId)
     isBooksModalShow.value = true
   }
 
@@ -44,11 +49,38 @@ export const useBookStore = defineStore('book', () => {
     isBooksModalShow.value = false
   }
 
+  async function getCurrentBook(id) {
+    const apiAnswer = await fetch(`https://www.googleapis.com/books/v1/volumes/${id}`)
+    const answerToJson = await apiAnswer.json()
+    const answerVolInfo = await answerToJson['volumeInfo']
+
+    if (
+      answerVolInfo.imageLinks &&
+      answerVolInfo.title &&
+      answerVolInfo.authors &&
+      answerVolInfo.industryIdentifiers
+    ) {
+      selectedBook.value = {
+        id: answerVolInfo.id,
+        title: answerVolInfo.title,
+        author: answerVolInfo.authors,
+        img: answerVolInfo.imageLinks.thumbnail,
+        description: answerVolInfo.description,
+        isbn: answerVolInfo.industryIdentifiers[0].identifier,
+        pageCount: answerVolInfo.pageCount,
+        publisher: answerVolInfo.publisher
+      }
+    }
+
+    console.log(selectedBook.title)
+  }
+
   return {
     books,
     isBooksFound,
     isLoaderShow,
     isBooksModalShow,
+    selectedBook,
     getBooks,
     openBooksModalWindow,
     closeBooksModalWindow

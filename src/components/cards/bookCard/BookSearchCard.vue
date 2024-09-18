@@ -1,7 +1,7 @@
 <script setup>
 import { useBookStore } from '@/stores/bookStore'
 
-const props = defineProps(['title', 'author', 'imgLink'])
+const props = defineProps(['title', 'author', 'imgLink', 'id'])
 
 const booksStore = useBookStore()
 </script>
@@ -15,7 +15,7 @@ const booksStore = useBookStore()
       <h4 class="book-search-card__title">{{ title }}</h4>
       <p class="book-search-card__author">{{ author }}</p>
       <div class="book-search-card__bottom">
-        <button class="book-search-card__more" @click="booksStore.openBooksModalWindow">
+        <button class="book-search-card__more" @click="booksStore.openBooksModalWindow" :id="id">
           Подробнее
         </button>
         <img src="@/assets/icons/plusIcon.svg" alt="" width="18" height="18" />
