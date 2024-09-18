@@ -1,8 +1,9 @@
 <script setup>
 import Header from '../Header/Header.vue'
 import FooterBlock from '../Footer/FooterBlock.vue'
-import SearchBlock from '../SearchBlock.vue'
+import SearchBlock from '../BooksSearch/SearchBlock.vue'
 import BookSearchCard from '../cards/bookCard/BookSearchCard.vue'
+import BookModal from '../modal/BooksModal/BookModal.vue'
 import { useBookStore } from '@/stores/bookStore'
 import { VueSpinner } from 'vue3-spinners'
 
@@ -32,6 +33,7 @@ const bookStore = useBookStore()
       </div>
     </main>
     <FooterBlock />
+    <BookModal v-if="bookStore.isBooksModalShow" />
   </div>
 </template>
 

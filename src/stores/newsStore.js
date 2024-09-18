@@ -5,22 +5,21 @@ export const useNewsStore = defineStore('news', () => {
   // Список объектов с новостями
   let news = ref([])
 
-  const isLoaderShow = ref(false)
+  const isNewsModalShow = ref(false)
 
-  // Переменная, отвечающая за открытие и закрытие модального окна с новостями
-  let isNewsModalShow = ref(false)
+  const isLoaderShow = ref(false)
 
   // Выбранная новость
   let selectedNew = ref({})
-
-  function closeNewsModalWindow() {
-    this.isNewsModalShow = false
-  }
 
   function openNewsModalWindow(event) {
     isNewsModalShow.value = true
     const newId = event.target.id
     selectedNew.value = news.value[newId]
+  }
+
+  function closeNewsModalWindow() {
+    isNewsModalShow.value = false
   }
 
   async function getAllNews() {
@@ -43,11 +42,11 @@ export const useNewsStore = defineStore('news', () => {
 
   return {
     news,
-    isNewsModalShow,
     isLoaderShow,
     selectedNew,
-    closeNewsModalWindow,
+    isNewsModalShow,
     openNewsModalWindow,
+    closeNewsModalWindow,
     getAllNews
   }
 })

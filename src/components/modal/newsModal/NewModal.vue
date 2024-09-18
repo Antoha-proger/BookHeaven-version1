@@ -1,15 +1,17 @@
 <script setup>
 import { useNewsStore } from '@/stores/newsStore'
+import ModalButtonClose from '../ModalButtonClose.vue'
+import ModalBack from '../ModalBack.vue'
 
-const store = useNewsStore()
+const newsStore = useNewsStore()
 </script>
 
 <template>
-  <div class="modal-back">
+  <ModalBack>
     <div class="modal-window">
       <div class="modal-window__left-part">
         <img
-          :src="store.selectedNew.urlToImage"
+          :src="newsStore.selectedNew.urlToImage"
           alt=""
           class="modal-window__new-image"
           width="250"
@@ -19,7 +21,7 @@ const store = useNewsStore()
       <div class="modal-window__right-part">
         <div class="modal-window__content">
           <h3 class="modal-window__new-title">
-            {{ store.selectedNew.title }}
+            {{ newsStore.selectedNew.title }}
           </h3>
           <div class="modal-window__text">
             Ясность нашей позиции очевидна: сплочённость команды профессионалов говорит о
@@ -40,34 +42,16 @@ const store = useNewsStore()
             высокотехнологичная концепция общественного уклада обеспечивает актуальность новых
             предложений.
           </div>
-          <p class="modal-window__new-author">{{ store.selectedNew.author }}</p>
+          <p class="modal-window__new-author">{{ newsStore.selectedNew.author }}</p>
         </div>
-        <button @click="store.closeNewsModalWindow" class="modal-button-close">
-          <img
-            class="modal-button-close-image"
-            src="@/assets/icons/modalButtonClose.svg"
-            alt=""
-            width="24"
-            height="24"
-          />
-        </button>
       </div>
+      <ModalButtonClose @close="newsStore.closeNewsModalWindow" />
     </div>
-  </div>
+  </ModalBack>
 </template>
 
 <style lang="sass">
 @import '@/assets/main.scss'
-
-.modal-back
-    width: 100vw
-    height: 100vh
-    background-color: rgba(161, 161, 161, 0.8)
-    z-index: 10
-    position: fixed
-    display: flex
-    justify-content: center
-    align-items: center
 
 .modal-window
     width: 800px
@@ -94,15 +78,4 @@ const store = useNewsStore()
         overflow: hidden
         height: 250px
         overflow-y: scroll
-
-
-.modal-button-close
-    border: none
-    background-color: transparent
-    cursor: pointer
-    position: relative
-    top: -25px
-    right: -25px
-    width: 24px
-    height: 24px
 </style>

@@ -1,5 +1,9 @@
 <script setup>
+import { useBookStore } from '@/stores/bookStore'
+
 const props = defineProps(['title', 'author', 'imgLink'])
+
+const booksStore = useBookStore()
 </script>
 
 <template>
@@ -11,7 +15,9 @@ const props = defineProps(['title', 'author', 'imgLink'])
       <h4 class="book-search-card__title">{{ title }}</h4>
       <p class="book-search-card__author">{{ author }}</p>
       <div class="book-search-card__bottom">
-        <p class="book-search-card__more">Подробнее</p>
+        <button class="book-search-card__more" @click="booksStore.openBooksModalWindow">
+          Подробнее
+        </button>
         <img src="@/assets/icons/plusIcon.svg" alt="" width="18" height="18" />
       </div>
     </div>
@@ -26,7 +32,7 @@ const props = defineProps(['title', 'author', 'imgLink'])
     flex-direction: column
     max-width: 200px
     margin-bottom: 50px
-    max-height: 420px
+    max-height: 430px
     transition: 0.3s
     &:hover
       transform: translateY(-10px)
@@ -61,8 +67,13 @@ const props = defineProps(['title', 'author', 'imgLink'])
       max-height: 30px
       overflow: hidden
       padding: 0 5px
-
+      margin-bottom: 10px
     &__more
       font-size: 18px
       color: $base-brown-color
+      background: transparent
+      border: none
+      cursor: pointer
+      &:hover
+        color: #000
 </style>

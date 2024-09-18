@@ -5,6 +5,7 @@ export const useBookStore = defineStore('book', () => {
   const books = ref([])
   const isBooksFound = ref(false)
   const isLoaderShow = ref(false)
+  const isBooksModalShow = ref(false)
 
   async function getBooks(searchBy, searchQuery) {
     isLoaderShow.value = true
@@ -19,17 +20,9 @@ export const useBookStore = defineStore('book', () => {
 
     let jsonRes = await res.json()
     let selectItems = await jsonRes['items']
-    // console.log(selectItems)
-
-    // let f = []
-
-    // // let g = Object.fromEntries(
-    // //   Object.entries(selectItems).filter(item => [])
-    // // )
 
     for (let i of selectItems) {
       let k = i['volumeInfo']
-      //   console.log(k)
       if (k.imageLinks && k.title && k.authors) {
         books.value.push({
           title: k.title,
@@ -41,44 +34,24 @@ export const useBookStore = defineStore('book', () => {
 
     isBooksFound.value = true
     isLoaderShow.value = false
-    // console.log(this.books)
+  }
 
-    // https://openlibrary.org/search.json?q=the+lord+of+the+rings
+  function openBooksModalWindow() {
+    isBooksModalShow.value = true
+  }
 
-    //   const book_words = searchQuery.split(' ')
-    //   const parsed_book = book_words.join('+')
-    //   const book_name = parsed_book
-
-    //   const headers = new Headers({
-    //     'User-Agent': 'BookHeaven (kobeleva166@gmail.com)'
-    //   })
-
-    //   const options = {
-    //     method: 'GET',
-    //     headers: headers
-    //   }
-    //   console.log(book_name)
-    //   const url = `https://openlibrary.org/search.json?${searchBy}=${book_name}&limit=12&fields=title,author_name,cover_edition_key,number_of_pages_median,publisher,isbn&language=rus&sort=editions`
-
-    //   const res = await fetch(url, options)
-    //   const jres = await res.json()
-
-    //   this.books = await jres.docs
-
-    //   // console.log(this.books, searchBy)
-
-    //   for (let i of books.value) {
-    //     i.imageLink = `https://covers.openlibrary.org/b/olid/${i.cover_edition_key}.jpg`
-    //   }
-    //   console.log(this.books)
-    //   // https://covers.openlibrary.org/a/olid/OL23919A-M.jpg
+  function closeBooksModalWindow() {
+    isBooksModalShow.value = false
   }
 
   return {
     books,
     isBooksFound,
     isLoaderShow,
-    getBooks
+    isBooksModalShow,
+    getBooks,
+    openBooksModalWindow,
+    closeBooksModalWindow
   }
 })
 
